@@ -45,6 +45,9 @@ $(PROJ_NAME): $(OBJ)
 objFolder:
 	@ mkdir -p objects
 
+run: ${PROJ_NAME}
+	./${PROJ_NAME}
+
 clean:
 	@ $(RM) ./objects/*.o $(PROJ_NAME) *~
 	@ rmdir objects
