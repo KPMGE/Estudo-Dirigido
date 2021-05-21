@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include "integer_t.h"
 #include "double_t.h"
 
 int main(void) {
@@ -39,6 +40,46 @@ int main(void) {
   Double_destruir(ptc, free);
   Double_destruir(ptd, free);
   Double_destruir(soma, free);
+
+
+  // implementação para inteiros
+  int a2 = 5.0, b2 = 6.0;
+  void *vet2[2];
+  void *ptc2;
+  void *ptd2 = NULL;
+  void *soma2 = NULL;
+
+
+  printf("\n\nImplementacao com inteiros ....\n\n");
+  vet2[0] = Integer_criar_vals(&a2, malloc);
+  vet2[1] = Integer_criar_vals(&b2, malloc);
+  ptc2 = Integer_criar_zero(malloc);
+  ptd2 = Integer_criar_copiar(ptc2, malloc, memcpy);
+
+  printf("vet[0] = %d \n", Integer_get(vet2[0]));
+  printf("vet[1] = %d\n", Integer_get(vet2[1]));
+  printf(" ptc = %d\n", Integer_get(ptc2));
+  printf(" ptd = %d\n", Integer_get(ptd2));
+
+  Integer_set(ptc2, &a2);
+  Integer_set(ptd2, &b2);
+
+  printf("Atribuindo 7.0 e 8.0 a ptc e ptd...\n");
+  printf(" ptc = %d \n", Integer_get(ptc2));
+  printf(" ptd = %d \n", Integer_get(ptd2));
+  printf("Somando ptc e ptd...\n");
+
+  soma2 = Integer_criar_zero(malloc);
+  soma2 = Integer_somar(ptc2, ptd2, soma2);
+
+  printf(" soma = %d \n", Integer_get(soma2));
+
+  Integer_destruir(vet2[0], free);
+
+  Integer_destruir(vet2[1], free);
+  Integer_destruir(ptc2, free);
+  Integer_destruir(ptd2, free);
+  Integer_destruir(soma2, free);
 
   return 0;
 }
