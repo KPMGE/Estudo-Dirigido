@@ -78,5 +78,45 @@ void *PREF_(multiplicar)(void* a, void* b, void* resultado) {
   return ((void *)resultado); 
 }
 
+void *PREF_(dividir)(void* a, void* b, void* resultado) {
+  NATIVO_ avalue = PREF_(get)(a);
+  NATIVO_ bvalue = PREF_(get)(b);
+
+  if (bvalue == 0) {
+    printf("Divisao invalida!");
+    exit(1);
+  }
+
+  avalue /= bvalue;
+
+  PREF_(set)(resultado, &avalue);
+
+  return ((void *)resultado); 
+}
+
+void *PREF_(calcularRaiz)(void* a, void* resultado) {
+  NATIVO_ avalue = PREF_(get)(a);
+
+  if (avalue < 0) {
+    printf("Radiciacao invalida!");
+    exit(1);
+  }
+
+  avalue = sqrt(avalue);
+
+  PREF_(set)(resultado, &avalue);
+
+  return ((void *)resultado); 
+}
+
+void *PREF_(elevarAoQuadrado)(void* a, void* resultado) {
+  NATIVO_ avalue = PREF_(get)(a);
+  avalue = (avalue * avalue);
+
+  PREF_(set)(resultado, &avalue);
+
+  return ((void *)resultado); 
+}
+
 #endif
 #endif

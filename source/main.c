@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "integer_t.h"
 #include "double_t.h"
+#include "integer_t.h"
 
 int main(void) {
   double a = 5.0, b = 6.0;
@@ -12,6 +12,9 @@ int main(void) {
   void *soma = NULL;
   void *subtracao = NULL;
   void *multiplicacao = NULL;
+  void *divisao = NULL;
+  void *raiz = NULL;
+  void *quadrado = NULL;
 
   vet[0] = Double_criar_vals(&a, malloc);
   vet[1] = Double_criar_vals(&b, malloc);
@@ -39,10 +42,21 @@ int main(void) {
   subtracao = Double_subtrair(ptc, ptd, subtracao);
   printf("Subtracao = %lf \n", Double_get(subtracao));
 
-
   multiplicacao = Double_criar_zero(malloc);
   multiplicacao = Double_multiplicar(ptc, ptd, multiplicacao);
   printf("multiplicacao = %lf\n", Double_get(multiplicacao));
+
+  divisao = Double_criar_zero(malloc);
+  divisao = Double_dividir(ptc, ptd, divisao);
+  printf("divisao = %lf\n", Double_get(divisao));
+
+  raiz = Double_criar_zero(malloc);
+  raiz = Double_calcularRaiz(ptc, raiz);
+  printf("raiz de %lf = %lf\n", Double_get(ptc), Double_get(raiz));
+
+  quadrado = Double_criar_zero(malloc);
+  quadrado = Double_elevarAoQuadrado(ptc, quadrado);
+  printf("quadrado de %lf = %lf\n", Double_get(ptc), Double_get(quadrado));
 
   Double_destruir(vet[0], free);
   Double_destruir(vet[1], free);
@@ -51,6 +65,10 @@ int main(void) {
   Double_destruir(soma, free);
   Double_destruir(subtracao, free);
   Double_destruir(multiplicacao, free);
+  Double_destruir(divisao, free);
+  Double_destruir(raiz, free);
+  Double_destruir(quadrado, free);
+
 
 
   // implementação para inteiros
@@ -61,7 +79,9 @@ int main(void) {
   void *soma2 = NULL;
   void *subtracao2 = NULL;
   void *multiplicacao2 = NULL;
-
+  void *divisao2 = NULL;
+  void *raiz2 = NULL;
+  void *quadrado2 = NULL;
 
   printf("\n\nImplementacao com inteiros ....\n\n");
   vet2[0] = Integer_criar_vals(&a2, malloc);
@@ -94,6 +114,18 @@ int main(void) {
   multiplicacao2 = Integer_multiplicar(ptc2, ptd2, multiplicacao2);
   printf("multiplicacao = %d\n", Integer_get(multiplicacao2));
 
+  divisao2 = Integer_criar_zero(malloc);
+  divisao2 = Integer_dividir(ptc2, ptd2, divisao2);
+  printf("divisao = %d\n", Integer_get(divisao2));
+
+  raiz2 = Integer_criar_zero(malloc);
+  raiz2 = Integer_calcularRaiz(ptc2, raiz2);
+  printf("raiz de %d = %d\n", Integer_get(ptc2), Integer_get(raiz2));
+
+  quadrado2 = Integer_criar_zero(malloc);
+  quadrado2 = Integer_elevarAoQuadrado(ptc2, quadrado2);
+  printf("quadrado de %d = %d\n", Integer_get(ptc2), Integer_get(quadrado2));
+
   Integer_destruir(vet2[0], free);
   Integer_destruir(vet2[1], free);
   Integer_destruir(ptc2, free);
@@ -101,6 +133,9 @@ int main(void) {
   Integer_destruir(soma2, free);
   Integer_destruir(subtracao2, free);
   Integer_destruir(multiplicacao2, free);
+  Integer_destruir(divisao2, free);
+  Integer_destruir(raiz2, free);
+  Integer_destruir(quadrado2, free);
 
   return 0;
 }
