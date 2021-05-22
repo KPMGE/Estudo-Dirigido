@@ -58,5 +58,25 @@ void *PREF_(somar)(void *a, void *b, void *resultado) {
   return ((void *)resultado);
 }
 
+void *PREF_(subtrair)(void* a, void* b, void* resultado) {
+  NATIVO_ avalue = PREF_(get)(a);
+  NATIVO_ bvalue = PREF_(get)(b);
+  avalue -= bvalue;
+
+  PREF_(set)(resultado, &avalue);
+
+  return ((void *)resultado); 
+}
+
+void *PREF_(multiplicar)(void* a, void* b, void* resultado) {
+  NATIVO_ avalue = PREF_(get)(a);
+  NATIVO_ bvalue = PREF_(get)(b);
+  avalue *= bvalue;
+
+  PREF_(set)(resultado, &avalue);
+
+  return ((void *)resultado); 
+}
+
 #endif
 #endif

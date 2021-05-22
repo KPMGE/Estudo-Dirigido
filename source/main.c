@@ -10,6 +10,8 @@ int main(void) {
   void *ptc;
   void *ptd = NULL;
   void *soma = NULL;
+  void *subtracao = NULL;
+  void *multiplicacao = NULL;
 
   vet[0] = Double_criar_vals(&a, malloc);
   vet[1] = Double_criar_vals(&b, malloc);
@@ -31,15 +33,24 @@ int main(void) {
 
   soma = Double_criar_zero(malloc);
   soma = Double_somar(ptc, ptd, soma);
-
   printf(" soma = %lf \n", Double_get(soma));
 
-  Double_destruir(vet[0], free);
+  subtracao = Double_criar_zero(malloc);
+  subtracao = Double_subtrair(ptc, ptd, subtracao);
+  printf("Subtracao = %lf \n", Double_get(subtracao));
 
+
+  multiplicacao = Double_criar_zero(malloc);
+  multiplicacao = Double_multiplicar(ptc, ptd, multiplicacao);
+  printf("multiplicacao = %lf\n", Double_get(multiplicacao));
+
+  Double_destruir(vet[0], free);
   Double_destruir(vet[1], free);
   Double_destruir(ptc, free);
   Double_destruir(ptd, free);
   Double_destruir(soma, free);
+  Double_destruir(subtracao, free);
+  Double_destruir(multiplicacao, free);
 
 
   // implementação para inteiros
@@ -48,6 +59,8 @@ int main(void) {
   void *ptc2;
   void *ptd2 = NULL;
   void *soma2 = NULL;
+  void *subtracao2 = NULL;
+  void *multiplicacao2 = NULL;
 
 
   printf("\n\nImplementacao com inteiros ....\n\n");
@@ -71,15 +84,23 @@ int main(void) {
 
   soma2 = Integer_criar_zero(malloc);
   soma2 = Integer_somar(ptc2, ptd2, soma2);
-
   printf(" soma = %d \n", Integer_get(soma2));
 
-  Integer_destruir(vet2[0], free);
+  subtracao2 = Integer_criar_zero(malloc);
+  subtracao2 = Integer_subtrair(ptc2, ptd2, subtracao2);
+  printf("Subtracao = %d \n", Integer_get(subtracao2));
 
+  multiplicacao2 = Integer_criar_zero(malloc);
+  multiplicacao2 = Integer_multiplicar(ptc2, ptd2, multiplicacao2);
+  printf("multiplicacao = %d\n", Integer_get(multiplicacao2));
+
+  Integer_destruir(vet2[0], free);
   Integer_destruir(vet2[1], free);
   Integer_destruir(ptc2, free);
   Integer_destruir(ptd2, free);
   Integer_destruir(soma2, free);
+  Integer_destruir(subtracao2, free);
+  Integer_destruir(multiplicacao2, free);
 
   return 0;
 }
