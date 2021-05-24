@@ -24,7 +24,7 @@ int main(void) {
   vet[0] = Double_criar_vals(&a, mallocSeguro, MALLOC_MENSAGEM);
   vet[1] = Double_criar_vals(&b, mallocSeguro, MALLOC_MENSAGEM);
   ptc = criar_zero(sizeof(double), mallocSeguro, MALLOC_MENSAGEM, Double_zerar);
-  ptd = criar_copiar(ptc, sizeof(double), mallocSeguro, memcpySeguro, MALLOC_MENSAGEM);
+  ptd = criar_copiar(ptc, sizeof(Double_pt*), mallocSeguro, memcpySeguro, MALLOC_MENSAGEM);
 
   printf("vet[0] = %lf \n", Double_get(vet[0]));
   printf("vet[1] = %lf \n", Double_get(vet[1]));
@@ -90,7 +90,7 @@ int main(void) {
   vet2[0] = Integer_criar_vals(&a2, mallocSeguro, MALLOC_MENSAGEM);
   vet2[1] = Integer_criar_vals(&b2, mallocSeguro, MALLOC_MENSAGEM);
   ptc2 = criar_zero(sizeof(int), mallocSeguro, MALLOC_MENSAGEM, Integer_zerar);
-  ptd2 = criar_copiar(ptc2, sizeof(int), mallocSeguro, memcpySeguro, MALLOC_MENSAGEM);
+  ptd2 = criar_copiar(ptc2, sizeof(Integer_pt*), mallocSeguro, memcpySeguro, MALLOC_MENSAGEM);
 
   printf("vet[0] = %d \n", Integer_get(vet2[0]));
   printf("vet[1] = %d\n", Integer_get(vet2[1]));
