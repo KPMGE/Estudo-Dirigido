@@ -1,6 +1,9 @@
 #ifndef TIPOS_FUNCOES
 #define TIPOS_FUNCOES
+#include <stddef.h>
 
+/* typedef para o zerar */
+typedef void (*func0_1void_t)(void* num);
 /* typedef do malloc */
 typedef void *(*func1_1size_1str_t)(size_t tamanho, char* mensagem);
 /* typedef do memcpy */
