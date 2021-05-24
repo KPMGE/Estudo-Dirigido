@@ -46,7 +46,10 @@ objFolder:
 	@ mkdir -p objects
 
 run: ${PROJ_NAME}
-	./${PROJ_NAME}
+	@ ./${PROJ_NAME}
+
+valgrind: ${PROJ_NAME}
+	@valgrind ./${PROJ_NAME}
 
 clean:
 	@ $(RM) ./objects/*.o $(PROJ_NAME) *~
